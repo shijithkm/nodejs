@@ -3,7 +3,10 @@ const http = require('http');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const dishRouter = require('./routes/dishRouter');
+const dishesRouter = require('./routes/dishesRouter');
+const promotionsRouter = require('./routes/promotionsRouter');
+const leadersRouter = require('./routes/leadersRouter');
+
 const hostname = 'localhost';
 const port = 3000;
 
@@ -12,7 +15,9 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
-app.use('/dishes', dishRouter);
+app.use('/dishes', dishesRouter);
+app.use('/promotions', promotionsRouter);
+app.use('/leaders', leadersRouter);
 
 app.use((req, res, next) => {
   res.statusCode = 200;
